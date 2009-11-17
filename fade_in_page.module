@@ -2,5 +2,7 @@
 // $Id: fade_in_page $
 
 function fade_in_page_init(){
+  
   drupal_add_js(drupal_get_path('module', 'fade_in_page') . '/fade_in_page.js', 'module');
+
 }

@@ -1,0 +1,4 @@
+; $id: fade in page$
+name = fade in page
+description = fades in every page
+core = 6.x

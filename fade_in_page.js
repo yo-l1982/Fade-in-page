@@ -2,9 +2,6 @@
 
 // add a behavior to drupal js handler.
 Drupal.behaviors.fade_in_pageFadeout = function(context) {
-  
-  
-  
   //Need to fix a bug. when a scrollbar is shown the total width is wrong and the fadeing is one pixel off.
 /*  $(window).load(fixAlignment);
   $(window).resize(fixAlignment);
@@ -23,10 +20,13 @@ Drupal.behaviors.fade_in_pageFadeout = function(context) {
   $('.pager-link').click(fade_in_page);
   
   function fade_in_page() {
-    // Get required positioning settings for our blocks to fill
-    $fade_in_dom = $('.clear-block').find('.container-inner');
+  
+  // needed to check if the faded dom is present.:w
+  $fade_in_dom = $('.clear-block').find('.container-inner');
+
     // check if the dom is present on the page.
     if ($fade_in_dom.length > 0) {
+      // Get required positioning settings for our blocks to fill
       total_width = $fade_in_dom.width() + 20;
       total_height = $fade_in_dom.height();
       left = $fade_in_dom.offset().left - 10;
@@ -80,7 +80,9 @@ Drupal.behaviors.fade_in_pageFadeout = function(context) {
       b8_height = total_height - b2_height - b1_height;
       b8_left = left;
       b8_top = top_pos + b1_height + b2_height;
-      $('.fade_block').hide();
+      
+      //Remove previous existing fade blocks... or we will add 8 new divs every fade.
+      $('.fade_block').remove();
      
       // Create each block and set css setting for all the blocks. 
       $fade_block1 = $("<div class='fade_block'></div>"); 
@@ -182,7 +184,6 @@ Drupal.behaviors.fade_in_pageFadeout = function(context) {
       $("body").append($fade_block8);
  
 
-  
       //Lastly perform the fadeing. callback to make them fade one by one and not at the same time. OBS the one slide animation.
       $fade_block1.pause(500).fadeOut('fast', function() {
         $fade_block6.fadeOut('normal', function() {
